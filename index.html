@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asociación de Vivienda</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 60px; /* Espacio para el header */
+            padding-bottom: 60px; /* Espacio para el footer */
+        }
+        .gallery img {
+            max-width: 100%;
+            height: auto;
+        }
+        .navbar-brand img {
+            max-height: 40px;
+            margin-right: 10px;
+        }
+        .action-buttons {
+            position: fixed;
+            bottom: 80px; /* Ajustar esta distancia según sea necesario */
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px; /* Espacio entre los botones */
+        }
+        
+        /* Color Theme */
+        .navbar {
+            background: linear-gradient(45deg, #1C588C, #0F8DBF);
+            border-bottom: 2px solid #D9CBA3;
+            border-radius: 10px; /* Bordes redondeados */
+            padding: 10px; /* Espacio interno */
+        }
+        .navbar-brand, .nav-link {
+            color: #D9CBA3 !important;
+            font-weight: bold;
+            transition: color 0.3s ease; /* Efecto de transición */
+        }
+        .navbar-brand:hover, .nav-link:hover {
+            color: #FFFFFF !important;
+        }
+        .navbar-toggler {
+            border-color: #D9CBA3;
+        }
+        .btn-primary {
+            background-color: #0F8DBF;
+            border-color: #0F8DBF;
+        }
+        .btn-primary:hover {
+            background-color: #119FBF;
+            border-color: #119FBF;
+        }
+        h1, h2 {
+            color: #627327;
+        }
+        .sticky-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+        .sticky-header.scrolled {
+            background-color: rgba(28, 88, 140, 0.9); /* Background with transparency */
+        }
+        .content {
+            margin-top: 70px; /* Adjust based on header height */
+        }
+        footer {
+            background-color: #1C588C;
+            color: #D9CBA3;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .section {
+            border: 1px solid #0F8DBF; /* Borde delgado */
+            border-radius: 10px; /* Bordes redondeados */
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.action-button {
+    text-decoration: none;
+}
+
+.whatsapp-bubble {
+    display: flex;
+    align-items: center;
+    background-color: #DCF8C6;
+    border-radius: 20px;
+    padding: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    width: fit-content;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    max-width: 40px;
+}
+
+.whatsapp-bubble img {
+    width: 32px;
+    height: 32px;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-bubble span {
+    white-space: nowrap;
+    color: #000;
+    opacity: 0;
+    transition: all 0.3s ease;
+    margin-left: 10px;
+}
+
+.action-button:hover .whatsapp-bubble {
+    max-width: 500px; /* espacio suficiente para el texto */
+    padding-right: 25px; /* espacio adicional para el texto */
+}
+
+.action-button:hover .whatsapp-bubble img {
+    margin-right: 10px;
+}
+
+.action-button:hover .whatsapp-bubble span {
+    opacity: 1;
+}
+
+/* Asegúrate de que solo el elemento hover cambie */
+.action-buttons > a:hover .whatsapp-bubble {
+    max-width: 500px; /* espacio suficiente para el texto */
+    padding-right: 25px; /* espacio adicional para el texto */
+}
+
+.action-buttons > a:hover .whatsapp-bubble img {
+    margin-right: 10px;
+}
+
+.action-buttons > a:hover .whatsapp-bubble span {
+    opacity: 1;
+}
+.card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+            position: relative;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .card-img-wrapper {
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+        .card-img-wrapper img {
+            transition: transform 0.2s;
+            position: relative;
+        }
+        .card-img-wrapper img:hover {
+            transform: scale(2);
+            z-index: 10;
+        }
+        .card-title {
+            font-weight: bold;
+            color: #333;
+        }
+        .card-text {
+            color: #666;
+        }
+
+        .large-logo {
+            width: 152px; /* Puedes ajustar el tamaño según tus necesidades */
+            height: auto;
+            position: relative;
+            top: auto; /* Ajusta este valor según sea necesario para mover la imagen hacia arriba */
+        }
+        .carousel-inner img { height: 10%; width: 100%; object-fit: cover; }
+        
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: left;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .gallery img {
+            width: 45%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+       
+    </style>
+</head>
+<body>
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="imagen/casa 1.jpg" class="d-block w-100" alt="Imagen 1">
+            </div>
+            <div class="carousel-item">
+                <img src="imagen/casa 2.jpg" class="d-block w-100" alt="Imagen 2">
+            </div>
+            <div class="carousel-item">
+                <img src="imagen/casa 3.jpg" class="d-block w-100" alt="Imagen 3">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Anterior</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Siguiente</span>
+        </a>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-header">
+        <img src="imagen/logo.png" alt="Logo" class="large-logo">
+        <a class="navbar-brand" href="#">
+             CAPAQ ÑAN
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#inicio">Inicio <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#lotes">Lotes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contacto">Contacto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="plano.html">Plano</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container content">
+        <div class="section">
+            <h1 id="inicio">Asociación Qapac Ñan</h1>
+            <p>Somos una asociación de vivienda comprometida en hacer realidad el sueño de la casa propia. Nuestro objetivo es proporcionar soluciones habitacionales accesibles y de alta calidad, que permitan a las familias alcanzar la seguridad y la felicidad que proviene de tener un hogar propio. Trabajamos incansablemente para brindar a nuestros miembros las mejores oportunidades y recursos, asegurándonos de que cada paso en el proceso hacia la propiedad de la vivienda sea transparente y alentador. Juntos, construimos comunidades fuertes y sustentables donde cada persona puede prosperar.</p>
+        </div>
+
+        <div class="section">
+            <div class="gallery">
+                <h2>Galería</h2>
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                <img src="imagen/casa 1.jpg" alt="Casa de campo en terreno con pendiente">
+            </div>
+                <div class="col-md-6 col-sm-12">
+                <img src="imagen/casa 2.jpg" alt="Casas rústicas espectaculares">
+            </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 id="lotes">Lotes</h2>
+            <div class="row">
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="card">
+                        <div class="row no-gutters">
+                            <div class="col-md-4 card-img-wrapper">
+                                <img src="imagen/casa 3.jpg" class="card-img" alt="Imagen de lote">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Ubicación 1</h5>
+                                    <p class="card-text">Tamaño: 120 m²</p>
+                                    <p class="card-text">Precio: 120 USD m²</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="card">
+                        <div class="row no-gutters">
+                            <div class="col-md-4 card-img-wrapper">
+                                <img src="imagen/casa 2.jpg" class="card-img" alt="Imagen de lote">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Ubicación 1</h5>
+                                    <p class="card-text">Tamaño: 150 m²</p>
+                                    <p class="card-text">Precio: $50,000</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="card">
+                        <div class="row no-gutters">
+                            <div class="col-md-4 card-img-wrapper">
+                                <img src="imagen/casa 1.jpg" class="card-img" alt="Imagen de lote">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Ubicación 1</h5>
+                                    <p class="card-text">Tamaño: 500 m²</p>
+                                    <p class="card-text">Precio: $50,000</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="card">
+                        <div class="row no-gutters">
+                            <div class="col-md-4 card-img-wrapper">
+                                <img src="imagen/casa 2.jpg" class="card-img" alt="Imagen de lote">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Ubicación 1</h5>
+                                    <p class="card-text">Tamaño: 500 m²</p>
+                                    <p class="card-text">Precio: $50,000</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                            
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 id="contacto">Contacto</h2>
+            <p> Para informes comunicate con el número 974337427.</p>
+        </div>
+    </div>
+    <div class="action-buttons">
+        <a href="https://wa.link/uunu70" class="action-button" target="_blank">
+            <div class="whatsapp-bubble">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+                <span>¡Más información!</span>
+            </div>
+        </a>
+        <a href="https://wa.link/0ize6l" class="action-button" target="_blank">
+            <div class="whatsapp-bubble">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+                <span>¡Agendar una visita!</span>
+            </div>
+        </a>
+    </div>
+    
+
+    <footer>
+        &copy; 2025 Asociación Capaq Ñan. Todos los derechos reservados.
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Add scroll event listener
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.sticky-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Clickable</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .map-container {
+            position: relative;
+            width: 800px;
+            height: 600px;
+            background: url('imagen/plano.jpeg') no-repeat center center;
+            background-size: cover;
+            border: 2px solid #333;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .clickable-square {
+            position: absolute;
+            border: 2px solid #007bff;
+            background-color: rgba(0, 123, 255, 0.5);
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        .clickable-square:hover {
+            background-color: rgba(0, 123, 255, 0.8);
+            transform: scale(1.1);
+            z-index: 10;
+        }
+        .back-button {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: background-color 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+        .back-button img {
+            width: 20px;
+            height: 20px;
+        }
+        .panel {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 200px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="map-container">
+        <!-- Añade aquí los cuadrados clicables -->
+         <!--<div class="clickable-square" style="top: 50px; left: 50px; width: 100px; height: 100px;" onclick="alert('Cuadrado 1 clicado!')"></div>
+        <div class="clickable-square" style="top: 200px; left: 100px; width: 100px; height: 100px;" onclick="alert('Cuadrado 2 clicado!')"></div>-->
+        <!-- Añade más cuadrados según sea necesario -->
+
+        <!-- Panel derecho -->
+        <div class="panel">
+            <h4>Lotes</h4>
+            <p>Cantidad de Lotes: 200</p>
+        </div>
+
+        <!-- Botón de regreso -->
+        <a href="index.html" class="back-button">
+            <img src="imagen/flecha-izquierda.png" alt="Flecha izquierda">
+        </a>
+    </div>
+
+    <script>
+        // Puedes agregar JavaScript adicional si es necesario
+    </script>
+</body>
+</html>
